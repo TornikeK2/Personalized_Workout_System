@@ -5,7 +5,7 @@ from datetime import timedelta
 
 # Initialise environment variables
 env = environ.Env()
-# environ.Env.read_env() !!!!!!
+environ.Env.read_env()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -42,7 +42,7 @@ INSTALLED_APPS += [
     "rest_framework",
     "corsheaders",
     "drf_yasg",
-    'account',
+    # 'account',
     "djoser",
 ]
 
@@ -128,8 +128,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = '/static/'
+
+# Directory where static files will be collected during `collectstatic`
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+# Directories where Django looks for additional static files (during development)
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
